@@ -1,0 +1,99 @@
+*{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: .75rem;
+  box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+li{
+  list-style: none;
+}
+html,body{
+  width: 100%;
+  height: 100%;
+  overflow:auto;
+  position: fixed;
+  -webkit-overflow-scrolling:auto;
+  -webkit-user-select: none;
+  -webkit-touch-callout:none;
+}
+
+
+.b-top{
+  border-top: 1px solid #f1f1f1;
+}
+.b-bottom{
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.m-top{
+  margin-top: .3rem;
+}
+.m-bottom{
+  margin-bottom: .3rem;
+}
+/*padding*/
+.padding{
+  padding: .3rem .15rem;
+}
+.padding>*{
+  margin: 0 .3rem;
+  border-radius: .25rem;
+}
+.dark{
+  color: #333;
+}
+.gray{
+  color: #666;
+}
+.light{
+  color: #999;
+}
+.large{
+  font-size: .75rem;
+}
+.middle{
+  font-size: .65rem;
+}
+.middle{
+  font-size: .6rem;
+}
+*.more{
+  position: relative;
+  padding-right: .75rem!important;
+}
+*.more:after{
+  position: absolute;
+  top: 50%;
+  right: 0;
+  font-size: .6rem;
+  content: "\E601";
+  display: inline-block;
+  transform: translateY(-50%) rotate(180deg);
+  font-family: "iconfont" !important;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.iconfont{
+  font-size: inherit;
+}
+input{
+  width: 100%;
+  background-color: transparent;
+}
+.html>*{
+  display: block;
+}
+.html p{
+  padding: .5rem .75rem;
+  white-space: normal;
+  word-break: break-all;
+}
+.html img{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
