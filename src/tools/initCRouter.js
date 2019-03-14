@@ -83,7 +83,6 @@ const cRouter = new Router();
 //   if(pathName) cRouter.userRouterList(pathName);
 // }
 
-Vue.prototype.cRouter = cRouter;
 window.onhashchange = () => {
   const his = session.getSession();
   if (his.length) history.pushState(null, null, document.href);
@@ -92,6 +91,7 @@ window.onhashchange = () => {
 
 export default {
   Session, Router, setRouter(routers){
+    Vue.prototype.cRouter = cRouter;
     router = routers
   }
 }
