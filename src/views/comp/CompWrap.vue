@@ -1,5 +1,5 @@
 <template>
-  <TemWrap :config="wrapConfig">
+  <Wrap :config="wrapConfig">
     <div slot="leftSlide"><Btns><span>这里是左侧边栏</span></Btns></div>
     <div slot="rightSlide"><Btns><span>这里是右侧边栏</span></Btns></div>
     <Head>
@@ -37,15 +37,15 @@
       </Scroll>
     </Content>
     <Foot><Btns><span>这里是底部</span></Btns></Foot>
-  </TemWrap>
+  </Wrap>
 </template>
 <script>
 import wrap from '@vuc/wrap';
-import http from '@vuc/http';
+import {Wrap} from 'vuc-ui';
 const {WrapConfig, inputConf} = wrap;
 export default {
   name: 'compwrap',
-  components: wrap,
+  components: {Wrap, ...Wrap.relativeComp},
   data(){
     return {
       reflashList:[""],

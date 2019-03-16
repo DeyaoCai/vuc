@@ -16,11 +16,10 @@
   </div>
 </template>
 <script>
-import Scroll from '../../components/Scroll.vue';
-import Btns from '../../components/Btns.vue';
-import Content from '../../components/Content.vue';
+import {Wrap} from 'vuc-ui';
 import http from '@vuc/http';
 export default {
+  components: {Wrap,...Wrap.relativeComp},
   name: 'train',
   props:["conf"],
   methods:{
@@ -77,7 +76,6 @@ export default {
   },
   computed: {},
   watch: {},
-  components: {Scroll, Content, Btns},
 }
 </script>
 <style scoped>

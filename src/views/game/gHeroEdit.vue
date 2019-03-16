@@ -1,7 +1,7 @@
 <style scoped>
 </style>
 <template>
-  <TemWrap :config="wrapConfig">
+  <Wrap :config="wrapConfig">
     <GameSetting slot="leftSlide"></GameSetting>
     <GameImage slot="rightSlide" :conf="ImageConf"></GameImage>
     <div slot="header">
@@ -16,14 +16,16 @@
     <btns slot="footer" :type="['color']">
       <span @click="saveHero">保存</span>
     </btns>
-  </TemWrap>
+  </Wrap>
 </template>
 <script>
 import wrap from '@vuc/wrap';
 import http from '@vuc/http';
-const {WrapConfig, inputConf} = wrap;
+import {Wrap} from 'vuc-ui';
+import {roles, GHeroEditConf } from "cUtils"
+const {WrapConfig,  GameSetting, AuthorInfo, GameImage} = wrap;
 export default {
-  components: wrap,
+  components: {Wrap, ...Wrap.relativeComp, GameSetting, AuthorInfo, GameImage},
   name: 'home',
   mounted () {
     const id = this.$route.query.id;
@@ -32,8 +34,8 @@ export default {
     ).catch(e => console.log(e))
   },
   data () {
-    const dutys = Object.keys(wrap.roles.dutys).map(item => {
-      const items = wrap.roles.dutys[item];
+    const dutys = Object.keys(roles.dutys).map(item => {
+      const items = roles.dutys[item];
       items.enName = item;
       return items;
     })
@@ -43,7 +45,7 @@ export default {
     const info = {};
     const attrList = ["id", "name", "hp", "ap", "pow", "mag", "ski", "spe", "def", "res", "luc", "mov", "dutyType", "srcName",]
     attrList.forEach(item => (info[item] = null));
-    const inputList = new wrap.GHeroEditConf(attrList, this);
+    const inputList = new GHeroEditConf(attrList, this);
     return {
       inputList,
       dutys,

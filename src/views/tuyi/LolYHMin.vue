@@ -1,5 +1,5 @@
 <template>
-  <temWrap :config="wrapConfig">
+  <Wrap :config="wrapConfig">
     <Head slot="header">
       <HeadLeft><span @click="goBack" class="iconfont icon-guanyanren"></span></HeadLeft>
     </Head>
@@ -16,10 +16,11 @@
         </div>
       </Scroll>
     <Foot slot="footer"></Foot>
-  </temWrap>
+  </Wrap>
 </template>
 <script>
 import wrap from '@vuc/wrap';
+import {Wrap} from 'vuc-ui';
 import http from '@vuc/http';
 const {WrapConfig, inputConf} = wrap;
 function downloadImg(data,call) {
@@ -62,7 +63,7 @@ function getCanvasBase64(url, callback) {
 }
 
 export default {
-  components: wrap,
+  components: {Wrap, ...Wrap.relativeComp},
   name: 'home',
   methods:{
     goBack () {this.cRouter.goBack();},

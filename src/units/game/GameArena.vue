@@ -1,63 +1,3 @@
-<style scoped>
-  .arean-wrap{
-    height: 100%;
-    background-color: rgba(255,255,255,.9);
-  }
-  .arean{
-    display: flex;
-    position: relative;
-    overflow: hidden;
-  }
-  .arean>*{
-    flex: 1;
-  }
-  .role-img{
-    padding: 1rem 0;
-    margin: 0 1.5rem;
-    transition: all .1s;
-    transform: translate(.0rem);
-  }
-  .role-img>img{
-    display: block;
-    width: 100%;
-  }
-  .arean>div:first-child .role-img.active{
-    transition: all .3s;
-    transform: translate(-.2rem);
-  }
-  .arean>div:last-child .role-img.active{
-    transition: all .3s;
-    transform: translate(.2rem);
-  }
-  .base-info{
-    margin: 0 .75rem;
-    padding: 0 .75rem;
-    line-height: 1.5rem;
-    border: 1px dashed #ccc;
-  }
-  .base-info>li{
-    border-bottom: 1px dashed #ccc;
-  }
-  .message{
-    padding: 1.5rem;
-  }
-  .message>div{
-    text-align: center;
-    border-bottom: 1px dashed #ccc;
-    line-height: 1.5rem;
-    height: 1.5rem;
-  }
-  .over-btn{
-    padding: 0 1.5rem;
-  }
-  .over-btn>div{
-    border: 1px solid #418dcb;
-    text-align: center;
-    line-height: 2rem;
-    border-radius: .2rem;
-    color: #418dcb;
-  }
-</style>
 <template>
   <div  @click.stop="" class="arean-wrap">
     <div class="arean">
@@ -95,7 +35,7 @@
 </template>
 <script>
 // UI 组件
-import Scroll from '../../components/Scroll.vue';
+import {Wrap} from 'vuc-ui';
 
 class battle{
   constructor(player,enemy,battleEnd){
@@ -179,6 +119,7 @@ class battle{
   }
 }
 export default {
+  components:{Wrap, ...Wrap.relativeComp},
   name: 'train',
   props:["config"],
   methods:{},
@@ -212,6 +153,65 @@ export default {
       }
     },
   },
-  components:{Scroll},
 }
 </script>
+<style scoped>
+  .arean-wrap{
+    height: 100%;
+    background-color: rgba(255,255,255,.9);
+  }
+  .arean{
+    display: flex;
+    position: relative;
+    overflow: hidden;
+  }
+  .arean>*{
+    flex: 1;
+  }
+  .role-img{
+    padding: 1rem 0;
+    margin: 0 1.5rem;
+    transition: all .1s;
+    transform: translate(.0rem);
+  }
+  .role-img>img{
+    display: block;
+    width: 100%;
+  }
+  .arean>div:first-child .role-img.active{
+    transition: all .3s;
+    transform: translate(-.2rem);
+  }
+  .arean>div:last-child .role-img.active{
+    transition: all .3s;
+    transform: translate(.2rem);
+  }
+  .base-info{
+    margin: 0 .75rem;
+    padding: 0 .75rem;
+    line-height: 1.5rem;
+    border: 1px dashed #ccc;
+  }
+  .base-info>li{
+    border-bottom: 1px dashed #ccc;
+  }
+  .message{
+    padding: 1.5rem;
+  }
+  .message>div{
+    text-align: center;
+    border-bottom: 1px dashed #ccc;
+    line-height: 1.5rem;
+    height: 1.5rem;
+  }
+  .over-btn{
+    padding: 0 1.5rem;
+  }
+  .over-btn>div{
+    border: 1px solid #418dcb;
+    text-align: center;
+    line-height: 2rem;
+    border-radius: .2rem;
+    color: #418dcb;
+  }
+</style>

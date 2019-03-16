@@ -1,6 +1,6 @@
 <template>
   <PopUp :config="config">
-    <MusicWrap :config="wrapConfig">
+    <Wrap :config="wrapConfig">
       <Head slot="header">
         <HeadTitle>排行榜</HeadTitle>
         <HeadLeft><span @click="hidePop" class="iconfont icon-shangyige"></span></HeadLeft>
@@ -23,17 +23,18 @@
             </li>
           </ul>
       </Scroll>
-    </MusicWrap>
+    </Wrap>
   </PopUp>
 </template>
 <script>
 import wrap from '@vuc/wrap';
+import {Wrap} from 'vuc-ui';
 import http from '@vuc/http';
 import $music from '@vuc/http/http.js';
 
 const {WrapConfig, inputConf} = wrap;
 export default {
-  components: wrap,
+  components: {...wrap, Wrap, ...Wrap.relativeComp},
   name: 'musichome',
   methods:{
     hidePop(){this.config.hide();},

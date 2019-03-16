@@ -1,6 +1,6 @@
 <template>
   <ul class="music-sheet-list">
-    <ScrollSlide :config="item" v-for="(item,index) in songList.list" :key="index"  :supConf="songList">
+    <ScrollSlide  v-for="(item,index) in songList.list" :config="item" :key="index"  :supConf="songList">
       <li @click="showMusic(item)" @touchstart="hideAll(item)">
         <img :src="getSrc(item)" v-if="showPics && getSrc(item)">
         <div>
@@ -23,11 +23,11 @@
 <script>
 import Vue from "vue";
 import $music from '@vuc/http/http.js';
-import ScrollSlide from "../ScrollSlide.vue";
+import {Wrap} from "vuc-ui";
 export default {
+  components: {Wrap,...Wrap.relativeComp},
   name: 'music-sheet-list',
   props: ["config"],
-  components: {ScrollSlide},
   computed: {
     showPics () {return this.$store.state.music.shallShowPics},
   },

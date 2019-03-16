@@ -1,5 +1,5 @@
 <template>
-  <temWrap :config="wrapConfig">
+  <Wrap :config="wrapConfig">
     <Head slot="header">
       <HeadTitle>蔡德瑶的简历</HeadTitle>
       <HeadLeft><span @click="goBack()" class="iconfont icon-guanyanren"></span></HeadLeft>
@@ -11,7 +11,7 @@
             <div>个人资料</div>
             <Scroll :config="scrollConfig1">
               <div>
-                <column v-for="(item, index) in baseInfo.list" :key="'b_'+index"><div>{{item.name}}</div><div><input type="text" readonly="readonly" :value="item.val" @click.stop="copyThis($event)"></div></column>
+                <Column v-for="(item, index) in baseInfo.list" :key="'b_'+index"><div>{{item.name}}</div><div><input type="text" readonly="readonly" :value="item.val" @click.stop="copyThis($event)"></div></Column>
               </div>
             </Scroll>
           </div></ScrollToFull></div>
@@ -43,7 +43,7 @@
           <div><ScrollToFull  :config="scrollConfig"><div class="resume-title-inner">
             <div>自我评价</div>
             <Scroll :config="scrollConfig3">
-              <column v-for="(item, index) in introduce.list" :key="'i_'+index"><div>{{item.name}}</div><div>{{item.val}}</div></column>
+              <Column v-for="(item, index) in introduce.list" :key="'i_'+index"><div>{{item.name}}</div><div>{{item.val}}</div></Column>
               <ul>
                 <li v-for="(item, index) in introduce.desc.split('::')" :key="'id_'+index">{{item}}</li>
               </ul>
@@ -52,13 +52,14 @@
         </div>
       </Scroll>
     <Foot slot="footer"></Foot>
-  </temWrap>
+  </Wrap>
 </template>
 <script>
 import wrap from '@vuc/wrap';
+import {Wrap} from 'vuc-ui';
 const {WrapConfig} = wrap;
 export default {
-  components: wrap,
+  components: {Wrap, ...Wrap.relativeComp},
   name: 'home',
   methods: {
     copyThis(ev) {

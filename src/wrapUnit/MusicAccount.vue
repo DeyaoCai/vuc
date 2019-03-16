@@ -1,5 +1,5 @@
 <template>
-  <MusicWrap :config="wrapConfig">
+  <Wrap :config="wrapConfig">
     <Head slot="header">
       <HeadTitle>设置</HeadTitle>
     </Head>
@@ -14,29 +14,28 @@
             <i>签到</i>
           </div>
         </ScrollToFull></div>
-
-
-        <column>
+        <Column>
           <div class="home-title iconfont icon-yonghutouxiang"> 用户昵称 </div>
           <div><input type="text" placeholder="464"></div>
-        </column>
-        <column><div class="home-title iconfont icon-dingdan"> 用户签名 </div><div><input type="text"></div></column>
-        <column :type="'b-top m-bottom'"><div class="home-title iconfont icon-guanbi-"> 性别 </div><div>nan</div></column>
-        <column><div class="home-title iconfont icon-yanchurili"> 出生日期 </div><div>nan</div></column>
+        </Column>
+        <Column><div class="home-title iconfont icon-dingdan"> 用户签名 </div><div><input type="text"></div></Column>
+        <Column :type="'b-top m-bottom'"><div class="home-title iconfont icon-guanbi-"> 性别 </div><div>nan</div></Column>
+        <Column><div class="home-title iconfont icon-yanchurili"> 出生日期 </div><div>nan</div></Column>
 
-        <column :type="'m-top m-bottom'"></column>
+        <Column :type="'m-top m-bottom'"></Column>
         <Btns :type="'color padding small'"><div class="home-title iconfont icon-shezhi"> 退出登录 </div><div>nan</div></Btns>
       </Scroll>
     <Foot slot="footer"></Foot>
-  </MusicWrap>
+  </Wrap>
 </template>
 <script>
 import wrap from '@vuc/wrap';
+import {Wrap} from 'vuc-ui';
 import $music from '@vuc/http/http';
 const {WrapConfig, inputConf} = wrap;
 
 export default {
-  components: wrap,
+  components: {...wrap, Wrap, ...Wrap.relativeComp},
   name: 'musicmy',
   methods:{},
   mounted () {

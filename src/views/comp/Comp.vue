@@ -1,5 +1,5 @@
 <template>
-  <TemWrap :config="wrapConfig">
+  <Wrap :config="wrapConfig">
     <div slot="leftSlide">65465</div>
     <div slot="rightSlide">65465</div>
     <div slot="header">
@@ -41,15 +41,15 @@
       </Scroll>
     </Content>
     <Tab slot="out-footer" :config="scrollConfig"></Tab>
-  </TemWrap>
+  </Wrap>
 </template>
 <script>
 import wrap from '@vuc/wrap';
-
+import {Wrap} from 'vuc-ui';
 const {WrapConfig} = wrap;
 export default {
   name: 'home',
-  components: wrap,
+  components: {Wrap, ...Wrap.relativeComp},
   methods: {
     goBack () {
       this.$router.go(-1);

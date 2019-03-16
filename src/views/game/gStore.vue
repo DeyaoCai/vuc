@@ -1,5 +1,5 @@
 <template>
-  <TemWrap :config="wrapConfig">
+  <Wrap :config="wrapConfig">
     <div slot="header">
       <HeadTitle>仓库</HeadTitle>
       <HeadLeft><span @click="goBack" class="iconfont icon-fanhui"></span></HeadLeft>
@@ -27,14 +27,15 @@
         </ul>
         </Scroll>
     </Content>
-  </TemWrap>
+  </Wrap>
 </template>
 <script>
 import wrap from '@vuc/wrap';
 import http from '@vuc/http';
-const {WrapConfig, inputConf} = wrap;
+import {Wrap} from 'vuc-ui';
+const {WrapConfig, inputConf, GameSetting, AuthorInfo} = wrap;
 export default {
-  components: wrap,
+  components: {Wrap, ...Wrap.relativeComp, GameSetting, AuthorInfo},
   name: 'home',
   mounted () {
     http.getHeroList().then(res => {

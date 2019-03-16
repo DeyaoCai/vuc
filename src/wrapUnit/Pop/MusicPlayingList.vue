@@ -9,12 +9,13 @@
 </template>
 <script>
 import wrap from '@vuc/wrap';
+import {Wrap} from 'vuc-ui';
 import http from '@vuc/http';
 import $music from '@vuc/http/http.js';
 
 const {WrapConfig, inputConf} = wrap;
 export default {
-  components: wrap,
+  components: {...wrap, Wrap, ...Wrap.relativeComp},
   name: 'musichome',
   methods:{
     hidePop(){this.config.hide();},

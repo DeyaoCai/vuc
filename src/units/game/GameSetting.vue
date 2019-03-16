@@ -1,3 +1,44 @@
+<template>
+  <div class="anthor-info">
+    <Scroll :config="scrollConf">
+      <div class="setting-null"></div>
+      <div class="setting-inner">
+          <div v-for="item in list">
+            <span>{{item.name}}</span>
+            <span @click="item.isActive=!item.isActive">{{item.isActive?"开":"关"}}</span>
+          </div>
+        </div>
+        <img :src="footImg"/>
+    </Scroll>
+  </div>
+</template>
+<script>
+// UI 组件
+import {Wrap} from 'vuc-ui';
+
+export default {
+  components: {Wrap, ...Wrap.relativeComp},
+  name: 'train',
+  methods:{
+
+  },
+  mounted(){},
+  data(){
+    return {
+      footImg: "",
+      list:[
+        {name:"音乐",isActive:true},
+        {name:"音效",isActive:true},
+        {name:"震动",isActive:true},
+        {name:"提醒",isActive:true},
+      ],
+      scrollConf:{derction:"y",bgUrl:"./slide-left-top-img.jpg", bgRate:.6},
+    }
+  },
+  computed:{},
+  watch:{},
+}
+</script>
 <style scoped>
   .anthor-info{
     height: 100%;
@@ -62,44 +103,4 @@
     width: 100%;
   }
 </style>
-<template>
-  <div class="anthor-info">
-    <Scroll :config="scrollConf">
-      <div class="setting-null"></div>
-      <div class="setting-inner">
-          <div v-for="item in list">
-            <span>{{item.name}}</span>
-            <span @click="item.isActive=!item.isActive">{{item.isActive?"开":"关"}}</span>
-          </div>
-        </div>
-        <img :src="footImg"/>
-    </Scroll>
-  </div>
-</template>
-<script>
-// UI 组件
-import comps from '@vuc/comps';
 
-export default {
-  name: 'train',
-  methods:{
-
-  },
-  mounted(){},
-  data(){
-    return {
-      footImg: "",
-      list:[
-        {name:"音乐",isActive:true},
-        {name:"音效",isActive:true},
-        {name:"震动",isActive:true},
-        {name:"提醒",isActive:true},
-      ],
-      scrollConf:{derction:"y",bgUrl:"./slide-left-top-img.jpg", bgRate:.6},
-    }
-  },
-  computed:{},
-  watch:{},
-  components: comps,
-}
-</script>

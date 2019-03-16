@@ -1,4 +1,4 @@
-import tools from "@vuc/tools.js";
+import tools from "cUtils";
 const state = {
   music: {
     shallShowPics: false,

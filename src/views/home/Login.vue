@@ -1,5 +1,5 @@
 <template>
-  <temWrap :config="wrapConfig">
+  <Wrap :config="wrapConfig">
     <Head slot="header">
       <HeadLeft><span @click="goBack()" class="iconfont icon-fanhui"></span></HeadLeft>
     </Head>
@@ -23,26 +23,25 @@
         <LoginBtns :type="'border small'"><span>微信</span><span>微博</span><span>QQ</span><span>百度</span></LoginBtns>
       </Content>
     </Scroll>
-  </temWrap>
+  </Wrap>
 </template>
 <script>
 import wrap from '@vuc/wrap';
-import http from '@vuc/http';
+import {Wrap} from 'vuc-ui';
+const {LoginInputs, LoginBtns} = wrap;
 import $music from '@vuc/http/http.js';
-console.log($music)
-const {WrapConfig, inputConf} = wrap;
+import {WrapConfig, inputConf, Verify} from "cUtils";
 export default {
-  components: wrap,
+  components: {Wrap, ...Wrap.relativeComp, LoginInputs, LoginBtns},
   name: 'home',
   data(){
-    const loginList = inputConf(["phone","password"], this, {phone: "16621079485", password: "a13789"})
+    const loginList = inputConf(["phone","password"], this, {phone: "16621079485", password: "a13789"});
     const registerList = inputConf(["userNmae","password","repeatPassword","phone"], this, {});
-    console.log(loginList,registerList)
     return {
       loginList,
       registerList,
       wrapConfig:new WrapConfig(),
-      scrollConf:{derction:"y",bgUrl: "./static/login_bg.jpg"},
+      scrollConf:{derction:"y",bgUrl: "http://47.104.252.208:3000/static/login_bg.jpg"},
       innerConf:{derction:"y",},
       tabConf:{
         takeOneStepAtATime:true,
@@ -67,7 +66,7 @@ export default {
   },
   methods:{
     loginCheck () {
-      const verify = new wrap.verify(this);
+      const verify = new Verify(this);
       const loginDate = this.loginList.getVal();
       console.log(loginDate)
       if (verify.on([
@@ -121,7 +120,6 @@ export default {
     margin: 0 .5rem;
   }
   .inner-wrap{
-
   }
   .inner-wrap{
     white-space: nowrap;

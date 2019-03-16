@@ -13,8 +13,7 @@
 </template>
 
 <script>
-import getClass from "../../tools/compType.js";
-import type from "../../tools/type.js"
+import {type} from "cUtils"
 export default {
   name: 'vuc-inputs',
   props:["config","type"],
@@ -26,7 +25,6 @@ export default {
     const conf=this.config;
   },
   methods:{
-    getClass(type){return getClass(type);},
     toggleVal(){this.config.isActive = !this.config.isActive;},
     onFocus(ev){this.readonly && ev.target.blur();},
   },

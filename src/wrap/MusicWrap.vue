@@ -1,34 +1,49 @@
 <template>
-  <div class="vuc-wrap"@touchmove.prevent="" :class="[slidePop&&slidePop.show?slidePop.type:'',isGoingBack?'w-left':'w-right',{'w-active':active}]">
-    <div class="vuc-wrap-inner">
-      <Head><slot name="header"></slot></Head>
-      <Content>
-        <Content><slot></slot></Content>
-        <Footer><slot name="footer"></slot></Footer>
-        <RadioPop v-if="radioPop" :config="radioPop"/>
-        <CheckPop v-if="checkPop" :config="checkPop"/>
-        <GameArenaPop v-if="gameArenaPop" :config="gameArenaPop"/>
-      </Content>
-      <Foot><slot name="out-footer"/></Foot>
-    </div>
-    <!-- 左右侧边栏显示时的遮罩 -->
-    <PopUp v-if="slidePop" @hidePop="slidePop.type=''" :config="slidePop"/>
-    <div class="vuc-wrap-leftslide"><slot name="leftSlide"/></div>
-    <div class="vuc-wrap-rightslide"><slot name="rightSlide"/></div>
+  <!--<div class="vuc-wrap"@touchmove.prevent="" :class="[slidePop&&slidePop.show?slidePop.type:'',isGoingBack?'w-left':'w-right',{'w-active':active}]">-->
+    <!--<div class="vuc-wrap-inner">-->
+      <!--<Head><slot name="header"></slot></Head>-->
+      <!--<Content>-->
+        <!--<Content><slot></slot></Content>-->
+        <!--<Footer><slot name="footer"></slot></Footer>-->
+        <!--<RadioPop v-if="radioPop" :config="radioPop"/>-->
+        <!--<CheckPop v-if="checkPop" :config="checkPop"/>-->
+        <!--<GameArenaPop v-if="gameArenaPop" :config="gameArenaPop"/>-->
+      <!--</Content>-->
+      <!--<Foot><slot name="out-footer"/></Foot>-->
+    <!--</div>-->
+    <!--&lt;!&ndash; 左右侧边栏显示时的遮罩 &ndash;&gt;-->
+    <!--<PopUp v-if="slidePop" @hidePop="slidePop.type=''" :config="slidePop"/>-->
+    <!--<div class="vuc-wrap-leftslide"><slot name="leftSlide"/></div>-->
+    <!--<div class="vuc-wrap-rightslide"><slot name="rightSlide"/></div>-->
 
-    <slot name="out-pop"/>
-    <ComfirmPop  :config="alertPop"/>
-    <ComfirmPop  :config="confirmPop"/>
-    <LoadingPop :config="loadingPop"/>
-  </div>
+    <!--<slot name="out-pop"/>-->
+    <!--<ComfirmPop  :config="alertPop"/>-->
+    <!--<ComfirmPop  :config="confirmPop"/>-->
+    <!--<LoadingPop :config="loadingPop"/>-->
+  <!--</div>-->
+  <Wrap :config="config">
+    <slot/>
+    <slot name="header" slot="header"/>
+    <slot name="footer" slot="footer"/>
+    <slot name="out-footer" slot="out-footer"/>
+    <slot name="leftSlide" slot="leftSlide"/>
+    <slot name="rightSlide" slot="rightSlide"/>
+    <div slot="out-pop">
+      <slot name="out-pop"/>
+      <!--<ComfirmPop  :config="alertPop"/>-->
+      <!--<ComfirmPop  :config="confirmPop"/>-->
+      <!--<LoadingPop :config="loadingPop"/>-->
+    </div>
+  </Wrap>
 </template>
 <script>
 /*
  wrap 应该是一个容器组件， 他定义了一系列的弹窗组件， 以及分割屏幕的各部分的容器， 然后返回一些开启弹窗的方法；
 */
 import units from "@vuc/units.js";
+import {Wrap} from "vuc-ui";
 export default {
-  components: units,
+  components: {Wrap, ...Wrap.relativeComp},
   name: 'vuc-wrap',
   props:["config"],
   data(){

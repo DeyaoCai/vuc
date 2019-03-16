@@ -1,5 +1,5 @@
 <template>
-  <temWrap :config="wrapConfig">
+  <Wrap :config="wrapConfig">
     <Head slot="header">
       <HeadLeft><span @click="goBack" class="iconfont icon-guanyanren"></span></HeadLeft>
     </Head>
@@ -22,14 +22,14 @@
         </div>
       </Scroll>
     <Foot slot="footer"></Foot>
-  </temWrap>
+  </Wrap>
 </template>
 <script>
 import wrap from '@vuc/wrap';
-import http from '@vuc/http';
+import {Wrap} from 'vuc-ui';
 const {WrapConfig, inputConf} = wrap;
 export default {
-  components: wrap,
+  components: {Wrap, ...Wrap.relativeComp},
   name: 'home',
   methods:{
     goBack () {this.cRouter.goBack();},

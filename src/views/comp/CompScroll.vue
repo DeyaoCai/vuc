@@ -1,5 +1,5 @@
 <template>
-  <TemWrap :config="wrapConfig">
+  <Wrap :config="wrapConfig">
     <div slot="header">
       <HeadTitle>Scroll</HeadTitle>
       <HeadLeft><span @click="goBack()" class="iconfont icon-fanhui"></span></HeadLeft>
@@ -63,15 +63,15 @@
       </div>
     </Scroll>
     <Tab slot="footer" :config="tabWrapConfig"></Tab>
-  </TemWrap>
+  </Wrap>
 </template>
 <script>
 import wrap from '@vuc/wrap';
-import http from '@vuc/http';
+import {Wrap} from 'vuc-ui';
 const {WrapConfig, inputConf} = wrap;
 export default {
   name: 'home',
-  components: wrap,
+  components: {Wrap, ...Wrap.relativeComp},
   methods:{
     goBack(){this.$router.go(-1);},
     showTimePicker() {this.wrapConfig.showTimePicker();},

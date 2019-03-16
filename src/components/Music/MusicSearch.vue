@@ -12,11 +12,9 @@
 </template>
 <script>
 // UI 组件
-import comps from '@vuc/comps';
 
 export default {
   name: 'train',
-  components: comps,
   data(){
     return {
       isFocused: false,

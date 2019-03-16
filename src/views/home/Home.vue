@@ -80,7 +80,7 @@
 </template>
 <script>
 
-import {Wrap, Column, Btns, Tab} from 'vuc-ui';
+import {Wrap} from 'vuc-ui';
 import wrap from '@vuc/wrap';
 try {
   const fs = window.require("fs");
@@ -93,7 +93,7 @@ try {
 const {WrapConfig} = wrap;
 const {AuthorInfo} = wrap;
 export default {
-  components: {Wrap, ...Wrap.relativeComp, AuthorInfo, Column, Btns, Tab},
+  components: {Wrap, ...Wrap.relativeComp, AuthorInfo},
   name: 'home',
   methods: {
     loginOut() {

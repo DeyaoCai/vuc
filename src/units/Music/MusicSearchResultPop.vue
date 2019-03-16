@@ -4,9 +4,12 @@
   </PopUp>
 </template>
 <script>
+import {Wrap} from "vuc-ui";
 import comps from "@vuc/comps.js";
+const {MusicSearchResult} = comps;
+
 export default {
-  components: comps,
+  components: {Wrap, ...Wrap.relativeComp, MusicSearchResult},
   name: 'vuc-confirm',
   props:["config"],
 }

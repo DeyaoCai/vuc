@@ -83,7 +83,7 @@
   }
 </style>
 <template>
-  <TemWrap :config="wrapConfig">
+  <Wrap :config="wrapConfig">
     <GameSetting slot="leftSlide"></GameSetting>
     <AuthorInfo slot="rightSlide"></AuthorInfo>
     <div slot="header">
@@ -122,14 +122,15 @@
     <Btns slot="footer" :type="['color']">
       <span @click="saveMap">保存</span>
     </Btns>
-  </TemWrap>
+  </Wrap>
 </template>
 <script>
 import wrap from '@vuc/wrap';
 import http from '@vuc/http';
-const {WrapConfig, inputConf} = wrap;
+import {Wrap} from 'vuc-ui';
+const {WrapConfig, inputConf, GameSetting, AuthorInfo} = wrap;
 export default {
-  components: wrap,
+  components: {Wrap, ...Wrap.relativeComp, GameSetting, AuthorInfo},
   name: 'home',
   mounted(){
     this.changeSize();

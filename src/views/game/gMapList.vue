@@ -15,7 +15,7 @@
   }
 </style>
 <template>
-  <TemWrap :config="wrapConfig">
+  <Wrap :config="wrapConfig">
     <GameSetting slot="leftSlide"></GameSetting>
     <AuthorInfo slot="rightSlide"></AuthorInfo>
     <div slot="header">
@@ -32,14 +32,15 @@
         <span @click="goEdit()">新建地图</span>
       </Btns>
     </Content>
-  </TemWrap>
+  </Wrap>
 </template>
 <script>
 import wrap from '@vuc/wrap';
 import http from '@vuc/http';
-const {WrapConfig, inputConf} = wrap;
+import {Wrap} from 'vuc-ui';
+const {WrapConfig, inputConf, GameSetting, AuthorInfo} = wrap;
 export default {
-  components: wrap,
+  components: {Wrap, ...Wrap.relativeComp, GameSetting, AuthorInfo},
   name: 'home',
   mounted(){
     http.getMapList().then(res=>{

@@ -1,18 +1,15 @@
 <template>
-  <MusicWrap :config="wrapConfig">
-    <AuthorInfo slot="leftSlide"></AuthorInfo>
-    <div slot="rightSlide"><btns><span>作者</span></btns>
-    </div>
-      <Scroll :config="scrollConfig">
-        <div class="scroll-demo">
-          <MusicDiscover :config="musicDiscoverConf"/>
-          <MusicVideo/>
-          <MusicMy :config="musicDiscoverConf"/>
-          <MusicAccount :config="musicDiscoverConf"/>
-        </div>
-      </Scroll>
+  <Wrap :config="wrapConfig">
+    <Scroll :config="scrollConfig">
+      <div class="scroll-demo">
+        <MusicDiscover :config="musicDiscoverConf"/>
+        <MusicVideo/>
+        <MusicMy :config="musicDiscoverConf"/>
+        <MusicAccount :config="musicDiscoverConf"/>
+      </div>
+    </Scroll>
     <Foot slot="footer"><Tab :config="scrollConfig"></Tab></Foot>
-    <div slot="out-pop">
+    <div slot="out-pop" class="aaa">
       <MusicDailyRecommend/>
       <MusicDailySheet/>
       <MusicDailySheetDetail/>
@@ -23,15 +20,16 @@
       <MusicPlay/>
       <MusicPlayingList/>
     </div>
-  </MusicWrap>
+  </Wrap>
 </template>
 <script>
 import wrap from '@vuc/wrapUnit';
+import {Wrap} from 'vuc-ui';
 import http from '@vuc/http';
 import $music from '@vuc/http/http';
-const {WrapConfig, inputConf} = wrap;
+import {WrapConfig} from "cUtils";
 export default {
-  components: wrap,
+  components: {...wrap, Wrap, ...Wrap.relativeComp},
   name: 'musichome',
   methods: {
     showSlide (type) {this.wrapConfig.showSlide({type});},

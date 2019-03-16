@@ -1,4 +1,4 @@
-import Time from "@vuc/tools/Time.js";
+import {Time} from "cUtils";
 
 
 const store = {

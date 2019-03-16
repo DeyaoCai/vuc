@@ -1,15 +1,13 @@
 <template>
-  <div class="vuc-btn" :class="getClass(type)">
+  <div class="vuc-btn" :class="type">
     <slot></slot>
   </div>
 </template>
 <script>
-import getClass from "../../tools/compType.js";
 export default {
   name: 'vuc-btn',
   props:["type"],
   methods:{
-    getClass(type){return getClass(type);}
   },
   computed:{},
 }

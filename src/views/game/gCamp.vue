@@ -2,7 +2,7 @@
   .inner{padding: 6rem 2rem;}
 </style>
 <template>
-  <TemWrap :config="wrapConfig">
+  <Wrap :config="wrapConfig">
     <GameSetting slot="leftSlide"></GameSetting>
     <AuthorInfo slot="rightSlide"></AuthorInfo>
     <div slot="header">
@@ -28,19 +28,16 @@
           </Btns>
       </div>
       </Scroll>
-
     </Content>
-    <Foot><btns>
-
-    </btns></Foot>
-  </TemWrap>
+    <Foot><btns></btns></Foot>
+  </Wrap>
 </template>
 <script>
 import wrap from '@vuc/wrap';
-import http from '@vuc/http';
-const {WrapConfig, inputConf} = wrap;
+import {Wrap} from 'vuc-ui';
+const {WrapConfig, inputConf, GameSetting, AuthorInfo} = wrap;
 export default {
-  components: wrap,
+  components: {Wrap, ...Wrap.relativeComp, GameSetting, AuthorInfo},
   name: 'home',
   mounted(){},
   methods:{

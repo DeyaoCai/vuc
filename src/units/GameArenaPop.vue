@@ -4,10 +4,10 @@
   </PopUp>
 </template>
 <script>
-import comps from "@vuc/comps.js";
+import {Wrap} from "vuc-ui";
 import GameArena from "./game/GameArena.vue"
 export default {
-  components: comps.useComp({GameArena}),
+  components: {Wrap, ...Wrap.relativeComp, GameArena},
   name: 'vuc-confirm',
   props:["config"],
 }

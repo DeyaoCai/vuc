@@ -1,8 +1,5 @@
-<style scoped>
-
-</style>
 <template>
-  <TemWrap :config="wrapConfig">
+  <Wrap :config="wrapConfig">
     <GameSetting slot="leftSlide"></GameSetting>
     <AuthorInfo slot="rightSlide"></AuthorInfo>
     <div slot="header">
@@ -19,14 +16,15 @@
         <span @click="goEdit()">新建英雄</span>
       </Btns>
     </Content>
-  </TemWrap>
+  </Wrap>
 </template>
 <script>
 import wrap from '@vuc/wrap';
 import http from '@vuc/http';
-const {WrapConfig, inputConf} = wrap;
+import {Wrap} from 'vuc-ui';
+const {WrapConfig, GameSetting, AuthorInfo, GameGoodsList} = wrap;
 export default {
-  components: wrap,
+  components: {Wrap, ...Wrap.relativeComp, GameSetting, AuthorInfo, GameGoodsList},
   name: 'home',
   mounted(){
     http.getHeroList().then(res=>{

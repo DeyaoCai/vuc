@@ -1,5 +1,5 @@
 <template>
-  <MusicWrap :config="wrapConfig">
+  <Wrap :config="wrapConfig">
     <AuthorInfo slot="leftSlide"></AuthorInfo>
     <div slot="rightSlide"><btns><span @click="">作者</span></btns>
     </div>
@@ -17,39 +17,21 @@
           <Scroll :config="bannerConfig" :height="'6rem'">
             <ul class="home-banner"><li v-for="(item, index) in banner" :key="index"><img :src="item.src"/></li></ul>
           </Scroll>
-
-          <!--<div class="test-saocaozuo-wrap">-->
-            <!--<div>-->
-              <!--<ScrollToFull  :config="tabConfig"><div class="test-saocaozuo">-->
-                <!--<Icon :type="'arrow-left'"/>-->
-              <!--</div></ScrollToFull>-->
-            <!--</div>-->
-            <!--<div>-->
-              <!--<ScrollToFull  :config="tabConfig"><div class="test-saocaozuo">123</div></ScrollToFull>-->
-            <!--</div>-->
-            <!--<div>-->
-              <!--<ScrollToFull  :config="tabConfig"><div class="test-saocaozuo">123</div></ScrollToFull>-->
-            <!--</div>-->
-            <!--<div>-->
-              <!--<ScrollToFull  :config="tabConfig"><div class="test-saocaozuo">123</div></ScrollToFull>-->
-            <!--</div>-->
-          <!--</div>-->
-
-          <column><div class="home-title"/></column>
-          <btns :type="'color padding'">
+          <Column><div class="home-title"/></Column>
+          <Btns :type="'color padding'">
             <div @click="showFM">私人FM</div>
             <div @click="showRecommend">每日推荐</div>
             <div @click="showDailySheet">歌单</div>
             <div @click="showRank">排行榜</div>
-          </btns>
+          </Btns>
 
-          <column><div class="home-title iconfont icon-fenlei">推荐歌单</div></column>
+          <Column><div class="home-title iconfont icon-fenlei">推荐歌单</div></Column>
           <MusicSheetList :config="sheetList"/>
 
-          <column><div class="home-title iconfont icon-fenlei">最新歌曲</div></column>
+          <Column><div class="home-title iconfont icon-fenlei">最新歌曲</div></Column>
           <MusicNewSongList :config="newSongList"/>
 
-          <column><div class="home-title iconfont icon-fenlei">精品歌单</div></column>
+          <Column><div class="home-title iconfont icon-fenlei">精品歌单</div></Column>
           <MusicSheetList :config="topSheetList"/>
 
         </Scroll>
@@ -57,49 +39,50 @@
           <Scroll :config="bannerConfig" :height="'6rem'">
             <ul class="home-banner"><li v-for="item in banner"><img :src="item.src"/></li></ul>
           </Scroll>
-          <column><div class="home-title"/></column>
-          <btns :type="'color padding'">
+          <Column><div class="home-title"/></Column>
+          <Btns :type="'color padding'">
             <div @click="">电台分类</div>
             <div @click="">电台排行</div>
             <div @click="">DJ电音</div>
             <div @click="">小冰电台</div>
-          </btns>
-          <column><div class="home-title iconfont icon-fenlei">今日优选</div></column>
-          <btns :type="'color padding'">
+          </Btns>
+          <Column><div class="home-title iconfont icon-fenlei">今日优选</div></Column>
+          <Btns :type="'color padding'">
             <div @click="">歌曲一</div>
             <div @click="">歌曲二</div>
             <div @click="">歌曲三</div>
-          </btns>
-          <btns :type="'color padding'">
+          </Btns>
+          <Btns :type="'color padding'">
             <div @click="">歌曲四</div>
             <div @click="">歌曲五</div>
             <div @click="">歌曲六</div>
-          </btns>
-          <column><div class="home-title iconfont icon-fenlei"> 有声书</div></column>
-          <btns :type="'color padding'">
+          </Btns>
+          <Column><div class="home-title iconfont icon-fenlei"> 有声书</div></Column>
+          <Btns :type="'color padding'">
             <div @click="">歌曲一</div>
             <div @click="">歌曲二</div>
             <div @click="">歌曲三</div>
-          </btns>
-          <btns :type="'color padding'">
+          </Btns>
+          <Btns :type="'color padding'">
             <div @click="">歌曲四</div>
             <div @click="">歌曲五</div>
             <div @click="">歌曲六</div>
-          </btns>
+          </Btns>
         </Scroll>
       </div>
     </Scroll>
     <MusicSearchResultPop :config="searchConf"/>
-  </MusicWrap>
+  </Wrap>
 </template>
 <script>
 import wrap from '@vuc/wrap';
+import {Wrap} from 'vuc-ui';
 import http from '@vuc/http';
 import $music from '@vuc/http/http.js';
 
 const {WrapConfig, inputConf} = wrap;
 export default {
-  components: wrap,
+  components: {...wrap, Wrap, ...Wrap.relativeComp},
   name: 'musichome',
   props: ["config"],
   data(){
@@ -177,7 +160,9 @@ export default {
       this.$store.mutations.showMusic({songDto, songs, needShowPop});
     },
     showFM () {this.$store.mutations.showFM();},
-    showRecommend () {this.$store.mutations.showRecommend();},
+    showRecommend () {
+      console.log(this.$store)
+      this.$store.mutations.showRecommend();},
     showDailySheet () {this.$store.mutations.showDailySheet();},
     showRank () {this.$store.mutations.showRank();},
   },

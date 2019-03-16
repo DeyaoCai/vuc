@@ -1,5 +1,5 @@
 <template>
-  <MusicWrap :config="wrapConfig">
+  <Wrap :config="wrapConfig">
     <AuthorInfo slot="leftSlide"></AuthorInfo>
     <div slot="rightSlide"><btns><span @click="">作者</span></btns>
     </div>
@@ -15,14 +15,15 @@
           </li>
         </ul>
       </Scroll>
-  </MusicWrap>
+  </Wrap>
 </template>
 <script>
 import wrap from '@vuc/wrap';
 import $music from '@vuc/http/http.js';
+import {Wrap} from 'vuc-ui';
 const {WrapConfig, inputConf} = wrap;
 export default {
-  components: wrap,
+  components: {...wrap, Wrap, ...Wrap.relativeComp},
   name: 'musicvideo',
   methods:{},
   mounted () {

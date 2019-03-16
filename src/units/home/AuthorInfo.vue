@@ -1,3 +1,45 @@
+<template>
+  <div class="anthor-info">
+    <Scroll :config="scrollConf" :height="'100%'">
+      <div class="author-info-null"></div>
+      <div class="author-info-inner">
+          <div><span>作者</span><span>蔡德瑶</span></div>
+          <div><span>职业</span><span>前端开发</span></div>
+          <div><span>毕业</span><span>2017-1</span></div>
+          <div><span>学校</span><span>南昌大学</span></div>
+          <div><span>学历</span><span>本科</span></div>
+          <div><span>材料成型及控制工程</span></div>
+          <div><span></span></div>
+
+          <div><span>360867514@qq.com</span></div>
+          <div><span>18179085273</span></div>
+          <div><span>https://github.com/</span></div>
+        </div>
+        <img :src="footImg"/>
+    </Scroll>
+  </div>
+</template>
+<script>
+// UI 组件
+import {Wrap} from 'vuc-ui';
+
+export default {
+  components: {Wrap, ...Wrap.relativeComp},
+  name: 'train',
+  methods:{
+
+  },
+  mounted(){},
+  data(){
+    return {
+      scrollConf:{derction:"y", bgUrl:"./static/slide-left-top-img.jpg", bgRate:.6},
+      footImg: "",
+    }
+  },
+  computed:{},
+  watch:{},
+}
+</script>
 <style scoped>
   .anthor-info{
     height: 100%;
@@ -62,45 +104,3 @@
     border-top: 1rem solid #fff;
   }
 </style>
-<template>
-  <div class="anthor-info">
-    <Scroll :config="scrollConf" :height="'100%'">
-      <div class="author-info-null"></div>
-      <div class="author-info-inner">
-          <div><span>作者</span><span>蔡德瑶</span></div>
-          <div><span>职业</span><span>前端开发</span></div>
-          <div><span>毕业</span><span>2017-1</span></div>
-          <div><span>学校</span><span>南昌大学</span></div>
-          <div><span>学历</span><span>本科</span></div>
-          <div><span>材料成型及控制工程</span></div>
-          <div><span></span></div>
-
-          <div><span>360867514@qq.com</span></div>
-          <div><span>18179085273</span></div>
-          <div><span>https://github.com/</span></div>
-        </div>
-        <img :src="footImg"/>
-    </Scroll>
-  </div>
-</template>
-<script>
-// UI 组件
-import comps from '@vuc/comps';
-
-export default {
-  name: 'train',
-  methods:{
-
-  },
-  mounted(){},
-  data(){
-    return {
-      scrollConf:{derction:"y", bgUrl:"./static/slide-left-top-img.jpg", bgRate:.6},
-      footImg: "",
-    }
-  },
-  computed:{},
-  watch:{},
-  components: comps,
-}
-</script>

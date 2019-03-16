@@ -1,101 +1,5 @@
-<style scoped>
-  .inner-wrap{
-    padding: .5rem;
-    padding-top: 5rem;
-    height: 100%;
-    background-image: url(../../assets/game-home-bg.jpg);
-    background-size: 120%;
-    background-position: top center;
-  }
-  .map-wrap{
-    height: 12rem;
-  }
-  .map{
-    width: 20rem;
-    height: 20rem;
-    background-color: #fff;
-    font-size: 0;
-    white-space: normal;
-  }
-  .map li{
-    display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    text-align: center;
-    background-size: 1rem 1rem;
-    background-repeat: no-repeat;
-  }
-  .map li:after{
-    content: "";
-    box-sizing: border-box;
-    display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    border: 1px dashed #fff;
-    transition: all .6s;
-  }
-  .map li.ls-sand{
-    background-image: url(../../assets/ls-sand.jpg);
-  }
-  .map li.ls-glass{
-    background-image: url(../../assets/ls-glass.jpg);
-  }
-  .map li.ls-forest{
-    background-image: url(../../assets/ls-forest.jpg);
-  }
-  .map li.ls-river{
-    background-image: url(../../assets/ls-river.jpg);
-  }
-  .map li.ls-route:after{
-    background-color: rgba(0,0,0,.5);
-  }
-  .map li.ls-attack:after{
-    background-color: rgba(191,3,25,.5);
-  }
-  .hero{
-    position: absolute;
-    background-color: rgba(255,255,255,.3);
-    transition: all .3s;
-  }
-  .hero span{
-    position: absolute;
-    background-color: rgba(191,3,25,1);
-    width: 100%;
-    height: 100%;
-    display: none;
-  }
-  .hero.attack{
-    z-index: 2;
-  }
-  .hero.attack span{
-    display: block;
-    opacity: .5;
-  }
-  .hero.actioned:after{
-    background-color: rgba(0,0,0,.4);
-  }
-  .hero .attack{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(191,3,25,.5);
-  }
-  .hero-info{
-    background-color: #fff;
-  }
-  .hero-info ul{
-    font-size: 0;
-  }
-  .hero-info li{
-    font-size: .75rem;
-    line-height: 1.2rem;
-    display: inline-block;
-    width: 25%;
-  }
-
-</style>
 <template>
-  <TemWrap :config="wrapConfig">
+  <Wrap :config="wrapConfig">
     <GameSetting slot="leftSlide"></GameSetting>
     <AuthorInfo slot="rightSlide"></AuthorInfo>
     <div slot="header">
@@ -169,14 +73,15 @@
     <Foot><btns>
 
     </btns></Foot>
-  </TemWrap>
+  </Wrap>
 </template>
 <script>
 import wrap from '@vuc/wrap';
 import http from '@vuc/http';
-const {WrapConfig, inputConf} = wrap;
+import {Wrap} from 'vuc-ui';
+const {WrapConfig, inputConf, GameSetting, AuthorInfo} = wrap;
 export default {
-  components: wrap,
+  components: {Wrap, ...Wrap.relativeComp, GameSetting, AuthorInfo},
   name: 'home',
   mounted () {
     // 设置地形限制行动的强度
@@ -277,3 +182,98 @@ export default {
   watch: {},
 }
 </script>
+<style scoped>
+  .inner-wrap{
+    padding: .5rem;
+    padding-top: 5rem;
+    height: 100%;
+    background-image: url(../../assets/game-home-bg.jpg);
+    background-size: 120%;
+    background-position: top center;
+  }
+  .map-wrap{
+    height: 12rem;
+  }
+  .map{
+    width: 20rem;
+    height: 20rem;
+    background-color: #fff;
+    font-size: 0;
+    white-space: normal;
+  }
+  .map li{
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    text-align: center;
+    background-size: 1rem 1rem;
+    background-repeat: no-repeat;
+  }
+  .map li:after{
+    content: "";
+    box-sizing: border-box;
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border: 1px dashed #fff;
+    transition: all .6s;
+  }
+  .map li.ls-sand{
+    background-image: url(../../assets/ls-sand.jpg);
+  }
+  .map li.ls-glass{
+    background-image: url(../../assets/ls-glass.jpg);
+  }
+  .map li.ls-forest{
+    background-image: url(../../assets/ls-forest.jpg);
+  }
+  .map li.ls-river{
+    background-image: url(../../assets/ls-river.jpg);
+  }
+  .map li.ls-route:after{
+    background-color: rgba(0,0,0,.5);
+  }
+  .map li.ls-attack:after{
+    background-color: rgba(191,3,25,.5);
+  }
+  .hero{
+    position: absolute;
+    background-color: rgba(255,255,255,.3);
+    transition: all .3s;
+  }
+  .hero span{
+    position: absolute;
+    background-color: rgba(191,3,25,1);
+    width: 100%;
+    height: 100%;
+    display: none;
+  }
+  .hero.attack{
+    z-index: 2;
+  }
+  .hero.attack span{
+    display: block;
+    opacity: .5;
+  }
+  .hero.actioned:after{
+    background-color: rgba(0,0,0,.4);
+  }
+  .hero .attack{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(191,3,25,.5);
+  }
+  .hero-info{
+    background-color: #fff;
+  }
+  .hero-info ul{
+    font-size: 0;
+  }
+  .hero-info li{
+    font-size: .75rem;
+    line-height: 1.2rem;
+    display: inline-block;
+    width: 25%;
+  }
+</style>

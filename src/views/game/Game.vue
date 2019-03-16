@@ -1,5 +1,5 @@
 <template>
-  <TemWrap :config="wrapConfig">
+  <Wrap :config="wrapConfig">
     <GameSetting slot="leftSlide"></GameSetting>
     <AuthorInfo slot="rightSlide"></AuthorInfo>
     <div slot="header">
@@ -25,14 +25,14 @@
     <Foot><btns>
 
     </btns></Foot>
-  </TemWrap>
+  </Wrap>
 </template>
 <script>
 import wrap from '@vuc/wrap';
-import http from '@vuc/http';
-const {WrapConfig, inputConf} = wrap;
+import {Wrap} from 'vuc-ui';
+const {WrapConfig, AuthorInfo, GameSetting} = wrap;
 export default {
-  components: wrap,
+  components: {Wrap, ...Wrap.relativeComp, AuthorInfo, GameSetting},
   name: 'home',
   mounted(){},
   methods:{

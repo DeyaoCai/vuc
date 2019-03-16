@@ -35,7 +35,7 @@
   }
 </style>
 <template>
-  <TemWrap :config="wrapConfig">
+  <Wrap :config="wrapConfig">
     <Head>
       <HeadLeft><span class="iconfont icon-fanhui" @click="goBack"></span></HeadLeft>
     </Head>
@@ -48,11 +48,11 @@
         </div>
       </Scroll>
     </Content>
-  </TemWrap>
+  </Wrap>
 </template>
 <script>
 import wrap from '@vuc/wrap';
-import http from '@vuc/http';
+import {Wrap} from 'vuc-ui';
 const {WrapConfig, inputConf} = wrap;
 const basearr=new Array(100).fill(0);
 basearr.forEach((item,i)=>{
@@ -60,7 +60,7 @@ basearr.forEach((item,i)=>{
     y:Math.floor(i/10),
     x:i%10,
   }
-})
+});
 const oriArr=[];
 new Array(20).fill(0).forEach((item,i)=>{
   const pushItem=basearr.splice(
@@ -70,7 +70,7 @@ new Array(20).fill(0).forEach((item,i)=>{
   oriArr.push(pushItem);
 });
 export default {
-  components: wrap,
+  components: {Wrap, ...Wrap.relativeComp},
   name: 'train',
   data(){
     return {

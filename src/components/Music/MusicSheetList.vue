@@ -17,10 +17,10 @@
 </template>
 <script>
 import $music from '@vuc/http/http.js';
-import ScrollSlide from "../ScrollSlide.vue";
+import {Wrap} from "vuc-ui";
 export default {
   name: 'music-sheet-list',
-  components: {ScrollSlide},
+  components: {Wrap, ...Wrap.relativeComp},
   props: ['config'],
   data(){
     return {

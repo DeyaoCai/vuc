@@ -5,12 +5,11 @@
 </template>
 <script>
 // UI 组件
-import Scroll from '../Scroll.vue';
-import Content from '../Content.vue';
 import MusicNewSongList from './MusicNewSongList.vue';
+import {Wrap} from "vuc-ui";
 export default {
+  components: {Wrap,...Wrap.relativeComp, MusicNewSongList},
   name: 'train',
-  components: {Scroll, Content, MusicNewSongList},
   data () {
     return {
       songList: {
