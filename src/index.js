@@ -7,6 +7,8 @@ import cRouter from "./tools/initCRouter.js";
 import {onresize, appendAudio} from "./tools/initAudio.js";
 import "./assets/font/iconfont.css"
 import "./assets/index.css"
+import vucUi from "vuc-ui";
+console.log(vucUi);
 comps.useComp = tools.useComp;
 onresize();
 appendAudio();

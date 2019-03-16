@@ -1,5 +1,6 @@
 <template>
-  <temWrap :config="wrapConfig">
+  <Wrap :config="wrapConfig">
+    <div slot="leftSlide">5456</div>
     <Head slot="header">
       <HeadTitle>testnew</HeadTitle>
       <HeadLeft><span @click="goBack()" class="iconfont icon-guanyanren"></span></HeadLeft>
@@ -10,22 +11,25 @@
         </div>
       </Scroll>
     <Foot slot="footer"></Foot>
-  </temWrap>
+  </Wrap>
 </template>
 <script>
+import {Wrap} from 'vuc-ui';
 import wrap from '@vuc/wrap';
-import http from '@vuc/http';
-const {WrapConfig, inputConf} = wrap;
 export default {
-  components: wrap,
+  components: {Wrap, ...Wrap.relativeComp},
   name: 'home',
   methods: {
     goBack () {this.cRouter.goBack();},
   },
-  mounted () {},
+  mounted () {
+    // this.wrapConfig.slidePop.show = true;
+  },
   data () {
     return {
-      wrapConfig: new WrapConfig(),
+      wrapConfig: {
+        slidePop: {type: "left", show: false}
+      },
       scrollConfig: {derction: "y",},
       picConfig: {src: "http://47.104.252.208:3000/static/1.jpg"},
     }
@@ -35,7 +39,10 @@ export default {
 
 <style scoped>
   .testnew{
-    height: 10rem;
+    height: 20rem;
     position: relative;
+  }
+  .testnew>div{
+    height: 100%;
   }
 </style>

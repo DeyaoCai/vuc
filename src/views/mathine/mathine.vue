@@ -93,9 +93,9 @@ export default {
       const next=basearr.splice(Math.floor(Math.random()*basearr.length),1)[0];
       const ks=oriArr.map(item=>{return{
         item:item,
-        dis:Math.sqrt(Math.pow(item.x-next.x,2)+Math.pow(item.y-next.y,2),2)
+        dis: Math.sqrt( 3 * Math.pow(item.x-next.x,2) + 2 * Math.pow(item.y-next.y,2),2)
       }})
-      ks.sort((a,b)=>a.dis>b.dis);
+      ks.sort((a,b)=> a.dis > b.dis ? -1 : 1);
       const kss=new Array(this.oriLen/4).fill(1).map((item,i)=>ks[i]);
       next.type=kss.filter(item=>item.item.type==="a").length>kss.filter(item=>item.item.type==="b").length?"a":"b";
       this.list.push(next);

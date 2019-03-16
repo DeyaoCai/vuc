@@ -1,8 +1,8 @@
 <template>
-  <temWrap :config="wrapConfig">
+  <Wrap :config="wrapConfig">
     <AuthorInfo slot="leftSlide"></AuthorInfo>
     <div slot="rightSlide">
-      <btns><span @click="loginOut">退出登录</span></btns>
+      <Btns><span @click="loginOut">退出登录</span></Btns>
     </div>
     <Head slot="header">
       <HeadTitle>主页</HeadTitle>
@@ -17,54 +17,54 @@
               <li v-for="(item, index) in banner" :key="index"><img :src="item.src"/></li>
             </ul>
           </Scroll>
-          <column>
+          <Column>
             <div class="home-title iconfont icon-fenlei">lol部分原画预览，图片查看器</div>
-          </column>
-          <btns :type="'color padding large'">
+          </Column>
+          <Btns :type="'color padding large'">
             <div @click="goLolYH">yh</div>
             <div @click="goLolYHMin">yhmin</div>
-          </btns>
+          </Btns>
 
-          <column>
+          <Column>
             <div class="home-title iconfont icon-fenlei">简历</div>
-          </column>
-          <btns :type="'color padding large'">
+          </Column>
+          <Btns :type="'color padding large'">
             <div @click="goResume">简历</div>
-          </btns>
-          <column>
+          </Btns>
+          <Column>
             <div class="home-title iconfont icon-fenlei">测试新页面，开发方便</div>
-          </column>
-          <btns :type="'color padding large'">
+          </Column>
+          <Btns :type="'color padding large'">
             <div @click="goTestnew">testnew</div>
-          </btns>
-          <column>
+          </Btns>
+          <Column>
             <div class="home-title iconfont icon-fenlei">网易云音乐，侵权请通知作者</div>
-          </column>
-          <btns :type="'color padding large'">
+          </Column>
+          <Btns :type="'color padding large'">
             <div @click="goMusic">网易云音乐</div>
-          </btns>
-          <column>
+          </Btns>
+          <Column>
             <div class="home-title iconfont icon-fenlei">瞎玩游戏</div>
-          </column>
-          <btns :type="'color padding large'">
+          </Column>
+          <Btns :type="'color padding large'">
             <div @click="goGame">回合制？</div>
-          </btns>
-          <column>
+          </Btns>
+          <Column>
             <div class="home-title iconfont icon-fenlei">机器学习</div>
-          </column>
-          <btns :type="'color padding large'">
+          </Column>
+          <Btns :type="'color padding large'">
             <div @click="goMathine(0)">k临近算法</div>
-          </btns>
-          <column>
+          </Btns>
+          <Column>
             <div class="home-title iconfont icon-fenlei">组件分类</div>
-          </column>
-          <btns :type="'color padding m-top large'">
+          </Column>
+          <Btns :type="'color padding m-top large'">
             <div @click="goComp(0)">弹窗</div>
             <div @click="goComp(1)">时间</div>
-          </btns>
-          <btns :type="'color padding m-bottom large'">
+          </Btns>
+          <Btns :type="'color padding m-bottom large'">
             <div @click="goComp(2)">按钮</div>
-          </btns>
+          </Btns>
         </Scroll>
         <Scroll :config="tabConfig">
           <Btns :type="'b-bottom'"><span @click="cRouter.push('compwrap')">wrap</span></Btns>
@@ -76,9 +76,11 @@
     <Foot slot="footer">
       <Tab :config="scrollConfig"></Tab>
     </Foot>
-  </temWrap>
+  </Wrap>
 </template>
 <script>
+
+import {Wrap, Column, Btns, Tab} from 'vuc-ui';
 import wrap from '@vuc/wrap';
 try {
   const fs = window.require("fs");
@@ -89,8 +91,9 @@ try {
   console.log(`now runing in web env!`)
 }
 const {WrapConfig} = wrap;
+const {AuthorInfo} = wrap;
 export default {
-  components: wrap,
+  components: {Wrap, ...Wrap.relativeComp, AuthorInfo, Column, Btns, Tab},
   name: 'home',
   methods: {
     loginOut() {
