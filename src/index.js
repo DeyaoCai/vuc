@@ -2,7 +2,7 @@ import comps from "./comps.js";
 import store from "./vuex";
 import routerConf from "./router/conf.js";
 import routerDef from "./router/index.js";
-import {initCRouter, initAudio} from "cUtils";
+import {initCRouter, initAudio} from "cdy-utils";
 import "./assets/font/iconfont.css"
 import "./assets/index.css"
 const {onresize, appendAudio} = initAudio;

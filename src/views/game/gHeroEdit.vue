@@ -22,7 +22,7 @@
 import wrap from '@vuc/wrap';
 import http from '@vuc/http';
 import {Wrap} from 'vuc-ui';
-import {roles, GHeroEditConf } from "cUtils"
+import {roles, GHeroEditConf } from "cdy-utils"
 const {WrapConfig,  GameSetting, AuthorInfo, GameImage} = wrap;
 export default {
   components: {Wrap, ...Wrap.relativeComp, GameSetting, AuthorInfo, GameImage},

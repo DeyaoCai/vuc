@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import {type} from "cUtils"
+import {type} from "cdy-utils"
 export default {
   name: 'vuc-inputs',
   props:["config","type"],

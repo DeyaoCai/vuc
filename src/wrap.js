@@ -9,7 +9,7 @@ import MusicSearchResult from "./components/Music/MusicSearchResult.vue"
 import MusicSheetList from "./components/Music/MusicSheetList.vue"
 import AuthorInfo from "./units/home/AuthorInfo.vue"
 import MusicSearchResultPop from "./units/Music/MusicSearchResultPop.vue"
-import {WrapConfig} from "cUtils"
+import {WrapConfig} from "cdy-utils"
 export default {
   GameImage,
   GameGoodsList,

@@ -1,4 +1,4 @@
-import unit from "cUtils"
+import unit from "cdy-utils"
 
 /*
  物品 类型

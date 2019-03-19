@@ -27,7 +27,7 @@ import wrap from '@vuc/wrapUnit';
 import {Wrap} from 'vuc-ui';
 import http from '@vuc/http';
 import $music from '@vuc/http/http';
-import {WrapConfig} from "cUtils";
+import {WrapConfig} from "cdy-utils";
 export default {
   components: {...wrap, Wrap, ...Wrap.relativeComp},
   name: 'musichome',

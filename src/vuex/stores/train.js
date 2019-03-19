@@ -1,4 +1,4 @@
-import {Time} from "cUtils";
+import {Time} from "cdy-utils";
 
 
 const store = {

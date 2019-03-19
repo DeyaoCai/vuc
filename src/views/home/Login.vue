@@ -30,7 +30,7 @@ import wrap from '@vuc/wrap';
 import {Wrap} from 'vuc-ui';
 const {LoginInputs, LoginBtns} = wrap;
 import $music from '@vuc/http/http.js';
-import {WrapConfig, inputConf, Verify} from "cUtils";
+import {WrapConfig, inputConf, Verify} from "cdy-utils";
 export default {
   components: {Wrap, ...Wrap.relativeComp, LoginInputs, LoginBtns},
   name: 'home',

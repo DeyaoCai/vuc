@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import App from './App';
-import {getInitRouter, getInitVuex} from './init.js';
 import confs from './index.js';
+import {init} from "cdy-utils";
+const {getInitRouter, getInitVuex} = init;
 const router = getInitRouter.apply(null, confs.router);
 const store = getInitVuex.apply(null, confs.store);
 Vue.config.productionTip = false;

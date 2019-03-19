@@ -1,4 +1,4 @@
-import tools from "cUtils";
+import tools from "cdy-utils";
 const state = {
   music: {
     shallShowPics: false,
