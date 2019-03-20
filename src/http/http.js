@@ -2,7 +2,7 @@ import httpConf from "./httpConf";
 function makeAjax(url) {
   return function(data){
     const cb = {fn: null, then: fn => (cb.fn = fn)};
-    // const fullUrl = "http://vuc.cn:3000" + url + (data ? ("?" + Object.keys(data).map(item=>item + "=" + data[item]).join("&")) : "");
+    // const fullUrl = "http://localhost:3000" + url + (data ? ("?" + Object.keys(data).map(item=>item + "=" + data[item]).join("&")) : "");
     const fullUrl = "http://47.104.252.208:3000" + url + (data ? ("?" + Object.keys(data).map(item=>item + "=" + data[item]).join("&")) : "");
     fetch(encodeURI(fullUrl),{
       xhrFields: {withCredentials: true},

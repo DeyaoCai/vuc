@@ -25,7 +25,7 @@ import http from '@vuc/http';
 const {WrapConfig, inputConf} = wrap;
 function downloadImg(data,call) {
   fetch(
-    "http://vuc.cn:8999/downloadImg",
+    "http://localhost:8999/downloadImg",
     {
       method: "POST",
       headers: {'Content-Type': 'application/json'},
@@ -69,7 +69,7 @@ export default {
     goBack () {this.cRouter.goBack();},
     minifyImg () {
       if (this.list && this.list.length) {
-        const id = encodeURI("http://vuc.cn:8999/" + this.list.shift());
+        const id = encodeURI("http://localhost:8999/" + this.list.shift());
         // this.imgUrl = id;
         getCanvasBase64(id, res => {
           this.imgUrl = res;
@@ -78,7 +78,7 @@ export default {
       }
     },
     getThreadList () {
-      fetch("http://vuc.cn:8999/getDiffLolList").then(resp => {
+      fetch("http://localhost:8999/getDiffLolList").then(resp => {
         resp.json().then(res => {
           this.list = res.data;
           this.minifyImg();
